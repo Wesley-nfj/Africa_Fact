@@ -3,6 +3,8 @@
 A simple **Streamlit web app** that lets you explore facts about any African country.  
 The app fetches real-time data from the [REST Countries API](https://restcountries.com/).
 
+You can use the app [HERE](http://localhost:8501/)
+
 ---
 
 ## ✨ Features
