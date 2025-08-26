@@ -21,20 +21,19 @@ if st.button("Get Facts") and selected_country:
 
         if response.status_code == 200:
             data = response.json()[0]
-
-            col1, col2 = st.columns([1,2])
-
+   
+            col1, col2 = st.column[(1, 2)]
             with col1:
-              st.image(data['flags']['png'], caption=f"{country} Flag")
+                 st.image(data['flags']['png'], caption=f"{country} Flag")
 
             with col2:
-              st.subheader(data["name"]["common"])
-              st.write(f"**Capital:** {data['capital'][0] if 'capital' in data else 'N/A'}")#Gives the Capital if it is available 
-              st.write(f"**Continent:** {data['region']}") # Gives its Continent if available 
-              st.write(f"**Population:** {data['population']:,}") #Gives the Population if it is available 
-              st.write(f"**Languages:** {', '.join(data['languages'].values()) if 'languages' in data else 'N/A'}") # Gives the Language if it is available 
-              st.write(f"**Currencies:** {', '.join([f'{v['name']} ({k})' for k, v in data['currencies'].items()]) if 'currencies' in data else 'N/A'}")  # Gives the Currency if it is available 
-              st.write(f"**Timezones:** {', '.join(data['timezones']) if 'timezones' in data else 'N/A'}")    # Gives the Timezone if it is available 
+                st.subheader(data["name"]["common"])
+                st.write(f"**Capital:** {data['capital'][0] if 'capital' in data else 'N/A'}") # Capital information
+                st.write(f"**Continent:** {data['region']}") # Continent information
+                st.write(f"**Population:** {data['population']:,}") # # Population information
+                st.write(f"**Languages:** {', '.join(data['languages'].values()) if 'languages' in data else 'N/A'}") # Langauge information
+                st.write(f"**Currencies:** {', '.join([f'{v['name']} ({k})' for k, v in data['currencies'].items()]) if 'currencies' in data else 'N/A'}") # Currency information
+                st.write(f"**Timezones:** {', '.join(data['timezones']) if 'timezones' in data else 'N/A'}") # Timezone information
         else:
             st.error("❌ Could not fetch data. Check spelling or try another country.")
     except Exception as e:
